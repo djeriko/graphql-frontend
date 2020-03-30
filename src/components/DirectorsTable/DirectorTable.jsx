@@ -12,7 +12,7 @@ import Menu from "@material-ui/core/Menu"
 import DeleteIcon from "@material-ui/icons/Delete"
 import CreateIcon from "@material-ui/icons/Create"
 
-// Dialog place
+import DirectorsDialog from "../DirectorsDialog/DirectorsDialog"
 
 import withHocs from "./DirectorsTableHoc"
 
@@ -64,11 +64,11 @@ function DirectorTable(classes) {
 
   return (
     <>
-      {/* <DirectorsDialog
+      <DirectorsDialog
         open={openDialog}
         handleClose={handleDialogClose}
-        id={activeElem.id}
-      /> */}
+        id={data.id}
+      />
       <Paper className={classes.root}>
         <Table>
           <TableHead>
