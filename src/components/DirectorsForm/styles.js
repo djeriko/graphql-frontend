@@ -9,7 +9,7 @@ export const styles = theme => ({
     width: "100%"
   },
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(),
     minWidth: 120
   },
   wrapper: {

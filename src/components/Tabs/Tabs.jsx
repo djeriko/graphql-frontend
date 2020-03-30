@@ -32,8 +32,8 @@ function SimpleTabs(classes, theme) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <Tab label="Movies" icon={<CameraIcon/>}/>
           <Tab label="Directors" icon={<MovieCreationIcon/>}/>
+          <Tab label="Movies" icon={<CameraIcon/>}/>
         </Tabs>
         <SwipeableViews axis={theme.direction === "rtl" ? "x-reverse" : "x"} index={value} onChangeIndex={handleChangeIndex}>
           <TabContainer dir={theme.direction}><Directors/></TabContainer>
