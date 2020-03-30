@@ -1,5 +1,5 @@
 import React from 'react';
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import { ThemeProvider as MuiThemeProvider} from "@material-ui/core/styles"
 import SimpleTabs from "./components/Tabs/Tabs"
 import theme from "./components/theme"
 function App() {

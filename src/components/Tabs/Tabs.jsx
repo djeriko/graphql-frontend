@@ -7,6 +7,8 @@ import SwipeableViews from "react-swipeable-views"
 import MovieCreationIcon from "@material-ui/icons/MovieCreation"
 import CameraIcon from "@material-ui/icons/Camera"
 
+import Directors from "../Directors/Directors"
+
 import withHoc from "./TabsHoc"
 
 const TabContainer = ({ children, dir }) => (
@@ -33,6 +35,10 @@ function SimpleTabs(classes, theme) {
           <Tab label="Movies" icon={<CameraIcon/>}/>
           <Tab label="Directors" icon={<MovieCreationIcon/>}/>
         </Tabs>
+        <SwipeableViews axis={theme.direction === "rtl" ? "x-reverse" : "x"} index={value} onChangeIndex={handleChangeIndex}>
+          <TabContainer dir={theme.direction}><Directors/></TabContainer>
+          <TabContainer></TabContainer>
+        </SwipeableViews>
       </AppBar>
     </div>
   )
