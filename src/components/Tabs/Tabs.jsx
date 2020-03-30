@@ -8,6 +8,7 @@ import MovieCreationIcon from "@material-ui/icons/MovieCreation"
 import CameraIcon from "@material-ui/icons/Camera"
 
 import Directors from "../Directors/Directors"
+import Movies from "../Movies/Movies"
 
 import withHoc from "./TabsHoc"
 
@@ -32,12 +33,20 @@ function SimpleTabs(classes, theme) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <Tab label="Directors" icon={<MovieCreationIcon/>}/>
-          <Tab label="Movies" icon={<CameraIcon/>}/>
+          <Tab label="Directors" icon={<MovieCreationIcon />} />
+          <Tab label="Movies" icon={<CameraIcon />} />
         </Tabs>
-        <SwipeableViews axis={theme.direction === "rtl" ? "x-reverse" : "x"} index={value} onChangeIndex={handleChangeIndex}>
-          <TabContainer dir={theme.direction}><Directors/></TabContainer>
-          <TabContainer></TabContainer>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabContainer dir={theme.direction}>
+            <Directors />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Movies />
+          </TabContainer>
         </SwipeableViews>
       </AppBar>
     </div>
