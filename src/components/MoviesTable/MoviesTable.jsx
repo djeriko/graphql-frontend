@@ -36,10 +36,10 @@ const movies = [
   }
 ]
 
-function MoviesTable({ classes, onOpen, onClose }) {
+function MoviesTable({ classes, onOpen, onClose, data }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
-  const [data, setData] = useState({ activeElem: {} })
+  // const [data, setData] = useState({ activeElem: {} })
 
   const handleDialogOpen = () => {
     setOpenDialog(true)
@@ -50,7 +50,7 @@ function MoviesTable({ classes, onOpen, onClose }) {
 
   const handleClick = ({ currentTarget }, data) => {
     setAnchorEl(currentTarget)
-    setData(data)
+    // setData(data)
   }
 
   const handleClose = () => {
@@ -66,6 +66,8 @@ function MoviesTable({ classes, onOpen, onClose }) {
     handleDialogOpen()
     handleClose()
   }
+  
+  console.log(data)
 
   return (
     <>
