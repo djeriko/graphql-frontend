@@ -16,25 +16,11 @@ import DirectorsDialog from "../DirectorsDialog/DirectorsDialog"
 
 import withHocs from "./DirectorsTableHoc"
 
-const directors = [
-  {
-    id: 1,
-    name: "Quentin Tarantino",
-    age: 55,
-    movies: [{ name: "Movie 1" }, { name: "Movie 2" }]
-  },
-  {
-    id: 2,
-    name: "Guy Ritchie",
-    age: 50,
-    movies: [{ name: "Movie 1" }, { name: "Movie 2" }]
-  }
-]
-
-function DirectorTable(classes) {
+function DirectorTable({ classes, data }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
-  const [data, setData] = useState({ activeElem: {} })
+  // const [data, setData] = useState({ activeElem: {} })
+  const { directors = [] } = data
 
   const handleDialogOpen = () => {
     setOpenDialog(true)
@@ -45,7 +31,7 @@ function DirectorTable(classes) {
 
   const handleClick = ({ currentTarget }, data) => {
     setAnchorEl(currentTarget)
-    setData(data)
+    // setData(data)
   }
 
   const handleClose = () => {
