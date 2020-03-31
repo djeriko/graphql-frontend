@@ -3,11 +3,12 @@ import Fab from "@material-ui/core/Fab"
 import AddIcon from "@material-ui/icons/Add"
 
 import MoviesTable from "../MoviesTable/MoviesTable"
-// import MoviesForm
+import MoviesForm from "../MoviesForm/MoviesForm"
 
 import withHocs from "./MoviesHoc"
 
 function Movies(classes) {
+  const [id, setId] = useState("")
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [genre, setGenre] = useState("")
@@ -21,6 +22,7 @@ function Movies(classes) {
   }
 
   const handleClose = () => {
+    setId("")
     setName("")
     setGenre("")
     setWatched(false)
@@ -41,14 +43,14 @@ function Movies(classes) {
 
   return (
     <>
-      {/* <MoviesForm
+      <MoviesForm
         handleChange={handleChange}
         handleSelectChange={handleSelectChange}
         handleCheckboxChange={handleCheckboxChange}
         selectedValue={{ id, name, genre, watched, rate, directorId }}
         open={open}
         onClose={handleClose}
-      /> */}
+      />
       <div className={classes.wrapper}>
         <MoviesTable onOpen={handleClickOpen} onClose={handleClose} />
         <Fab

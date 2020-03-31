@@ -57,7 +57,7 @@ function MoviesForm({
       <DialogTitle className={classes.title} id="simple-dialog-title">
         Movie information
       </DialogTitle>
-      <form className={classes.title} noValidate autoComplete="off">
+      <form className={classes.container} noValidate autoComplete="off">
         <TextField
           id="outlined-name"
           label="Name"
@@ -88,9 +88,9 @@ function MoviesForm({
         />
         <FormControl variant="outlined" className={classes.formControlSelect}>
           <InputLabel
-            ref={ref => {
-              InputLabelRef = ref
-            }}
+            // ref={ref => {
+            //   this.InputLabelRef = ref
+            // }}
             htmlFor="outlined-age-simple"
           >
             Director
