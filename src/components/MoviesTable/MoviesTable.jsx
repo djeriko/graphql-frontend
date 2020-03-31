@@ -13,7 +13,7 @@ import Menu from "@material-ui/core/Menu"
 import DeleteIcon from "@material-ui/icons/Delete"
 import CreateIcon from "@material-ui/icons/Create"
 
-// import MovieDialog from
+import MovieDialog from "../MoviesDialog/MoviesDialog"
 
 import withHocs from "./MoviesTableHoc"
 
@@ -36,10 +36,10 @@ const movies = [
   }
 ]
 
-function MoviesTable(classes, onOpen) {
+function MoviesTable({ classes, onOpen, onClose }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
-  const [data, setData] = useState()
+  const [data, setData] = useState({ activeElem: {} })
 
   const handleDialogOpen = () => {
     setOpenDialog(true)
@@ -69,11 +69,11 @@ function MoviesTable(classes, onOpen) {
 
   return (
     <>
-      {/* <MovieDialog
+      <MovieDialog
         open={openDialog}
         handleClose={handleDialogClose}
-        id={data.activeElem.id}
-      /> */}
+        id={data.id}
+      />
       <Paper className={classes.root}>
         <Table>
           <TableHead>

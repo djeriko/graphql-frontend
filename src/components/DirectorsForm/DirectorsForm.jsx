@@ -31,7 +31,6 @@ function DirectorsForm({
       open={open}
       aria-labelledby="simple-dialog-title"
     >
-      Director information
       <DialogTitle className={classes.title} id="simple-dialog-title">
         Director information
       </DialogTitle>
