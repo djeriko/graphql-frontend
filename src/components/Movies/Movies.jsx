@@ -2,12 +2,12 @@ import React, { useState } from "react"
 import Fab from "@material-ui/core/Fab"
 import AddIcon from "@material-ui/icons/Add"
 
-// import MoviesTable from ".../"
+import MoviesTable from "../MoviesTable/MoviesTable"
 // import MoviesForm
 
 import withHocs from "./MoviesHoc"
 
-function Movies( classes ) {
+function Movies(classes) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [genre, setGenre] = useState("")
@@ -41,16 +41,27 @@ function Movies( classes ) {
 
   return (
     <>
-      <Fab
-        onClick={() => handleClickOpen()}
-        color="primary"
-        aria-label="Add"
-        className={classes.fab}
-      >
-        <AddIcon/>
-      </Fab>
+      {/* <MoviesForm
+        handleChange={handleChange}
+        handleSelectChange={handleSelectChange}
+        handleCheckboxChange={handleCheckboxChange}
+        selectedValue={{ id, name, genre, watched, rate, directorId }}
+        open={open}
+        onClose={handleClose}
+      /> */}
+      <div className={classes.wrapper}>
+        <MoviesTable onOpen={handleClickOpen} onClose={handleClose} />
+        <Fab
+          onClick={() => handleClickOpen()}
+          color="primary"
+          aria-label="Add"
+          className={classes.fab}
+        >
+          <AddIcon />
+        </Fab>
+      </div>
     </>
   )
 }
 
-export default withHocs(Movies) 
+export default withHocs(Movies)
