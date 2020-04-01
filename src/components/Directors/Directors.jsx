@@ -7,7 +7,7 @@ import DirectorsForm from "../DirectorsForm/DirectorsForm"
 
 import withHocs from "./DirectorsHoc"
 
-function Directors(classes) {
+function Directors({classes}) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [id, setId] = useState(null)

@@ -18,7 +18,7 @@ const TabContainer = ({ children, dir }) => (
   </Typograhy>
 )
 
-function SimpleTabs(classes, theme) {
+function SimpleTabs({ classes, theme }) {
   const [value, setValue] = useState(0)
 
   const handleChange = (event, value) => {
@@ -36,19 +36,19 @@ function SimpleTabs(classes, theme) {
           <Tab label="Directors" icon={<MovieCreationIcon />} />
           <Tab label="Movies" icon={<CameraIcon />} />
         </Tabs>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
-        >
-          <TabContainer dir={theme.direction}>
-            <Directors />
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <Movies />
-          </TabContainer>
-        </SwipeableViews>
       </AppBar>
+      <SwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabContainer dir={theme.direction}>
+          <Directors />
+        </TabContainer>
+        <TabContainer dir={theme.direction}>
+          <Movies />
+        </TabContainer>
+      </SwipeableViews>
     </div>
   )
 }

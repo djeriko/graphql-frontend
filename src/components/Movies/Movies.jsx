@@ -7,7 +7,7 @@ import MoviesForm from "../MoviesForm/MoviesForm"
 
 import withHocs from "./MoviesHoc"
 
-function Movies(classes) {
+function Movies({classes}) {
   const [id, setId] = useState("")
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
