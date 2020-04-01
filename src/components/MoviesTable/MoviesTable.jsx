@@ -17,11 +17,12 @@ import MovieDialog from "../MoviesDialog/MoviesDialog"
 
 import withHocs from "./MoviesTableHoc"
 
-function MoviesTable({ classes, onOpen, onClose, data }) {
+function MoviesTable({ classes, onOpen, onClose, data}) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
-  // const [data, setData] = useState({ activeElem: {} })
-  const { movies = []} = data
+  const [activeElem, setActiveElem] = useState({})
+  const [tempData, setTempData] = useState({})
+  const { movies = [] } = data
 
   const handleDialogOpen = () => {
     setOpenDialog(true)
@@ -31,8 +32,8 @@ function MoviesTable({ classes, onOpen, onClose, data }) {
   }
 
   const handleClick = ({ currentTarget }, data) => {
+    setTempData(data)
     setAnchorEl(currentTarget)
-    // setData(data)
   }
 
   const handleClose = () => {
@@ -40,15 +41,16 @@ function MoviesTable({ classes, onOpen, onClose, data }) {
   }
 
   const handleEdit = () => {
-    onOpen(data)
+    onOpen(tempData)
     handleClose()
+    console.log(data)
   }
 
   const handleDelete = () => {
     handleDialogOpen()
     handleClose()
   }
-  
+
   console.log(data)
 
   return (
@@ -56,7 +58,7 @@ function MoviesTable({ classes, onOpen, onClose, data }) {
       <MovieDialog
         open={openDialog}
         handleClose={handleDialogClose}
-        id={data.id}
+        id={activeElem.id}
       />
       <Paper className={classes.root}>
         <Table>

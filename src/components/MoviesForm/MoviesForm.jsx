@@ -48,6 +48,8 @@ function MoviesForm({
     onClose()
   }
 
+  console.log(selectedValue)
+
   return (
     <Dialog
       onClose={handleClose}
