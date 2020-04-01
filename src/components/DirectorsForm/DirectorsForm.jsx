@@ -12,7 +12,8 @@ function DirectorsForm({
   selectedValue = {},
   open,
   classes,
-  handleChange
+  handleChange,
+  addDirector
 }) {
   
   const { name, age, id }  = selectedValue
@@ -22,6 +23,7 @@ function DirectorsForm({
   }
 
   const handleSave = () => {
+    addDirector({name, age: Number(age)})    
     onClose()
   }
 

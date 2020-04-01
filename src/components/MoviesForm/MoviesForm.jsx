@@ -14,21 +14,6 @@ import SaveIcon from "@material-ui/icons/Save"
 
 import withHocs from "./MoviesFormHoc"
 
-const directors = [
-  {
-    id: 1,
-    name: "Quentin Tarantino",
-    age: 55,
-    movies: [{ name: "Movie 1" }, { name: "Movie 2" }]
-  },
-  {
-    id: 2,
-    name: "Guy Ritchie",
-    age: 50,
-    movies: [{ name: "Movie 1" }, { name: "Movie 2" }]
-  }
-]
-
 function MoviesForm({
   classes,
   open,
@@ -36,15 +21,25 @@ function MoviesForm({
   handleSelectChange,
   handleCheckboxChange,
   selectedValue,
-  onClose
+  onClose,
+  data,
+  addMovie
 }) {
   const { name, genre, rate, directorId, watched } = selectedValue
+  const { directors = [] } = data
 
   const handleClose = () => {
     onClose()
   }
 
   const handleSave = () => {
+    addMovie({
+      name,
+      genre,
+      rate: Number(rate),
+      directorId,
+      watched: Boolean(watched)
+    })
     onClose()
   }
 
@@ -97,7 +92,17 @@ function MoviesForm({
           >
             Director
           </InputLabel>
-          <Select>
+          <Select
+            value={directorId}
+            onChange={handleSelectChange}
+            input={
+              <OutlinedInput
+                name="directorId"
+                id="outlined-director"
+                labelWidth={57}
+              />
+            }
+          >
             {directors.map(director => (
               <MenuItem key={director.id} value={director.id}>
                 {director.name}

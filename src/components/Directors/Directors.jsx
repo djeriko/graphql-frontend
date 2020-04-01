@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-
 import Fab from "@material-ui/core/Fab"
 import AddIcon from "@material-ui/icons/Add"
 import DirectorsTable from "../DirectorsTable/DirectorTable"
@@ -7,18 +6,26 @@ import DirectorsForm from "../DirectorsForm/DirectorsForm"
 
 import withHocs from "./DirectorsHoc"
 
-function Directors({classes}) {
+function Directors({ classes }) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [id, setId] = useState(null)
   const [age, setAge] = useState(0)
 
-  const handleClickOpen = data => {
+  const handleClickOpen = (data = {}) => {
     setOpen(true)
+    setName(data.name)
+    setId(data.id)
+    setAge(data.age)
   }
 
-  const handleChange = target => {
-    setName(target.value)
+  const handleChange = name => ({ target }) => {
+    if (name === "name") {
+      setName(target.value)
+    }
+    if (name === "age") {
+      setAge(target.value)
+    }
   }
 
   const handleClose = () => {
@@ -39,7 +46,7 @@ function Directors({classes}) {
       <div className={classes.wrapper}>
         <DirectorsTable onOpen={handleClickOpen} onClose={handleClose} />
         <Fab
-          onClick={() => handleClickOpen(null)}
+          onClick={() => handleClickOpen()}
           color="primary"
           aria-label="Add"
           className={classes.fab}

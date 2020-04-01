@@ -7,7 +7,7 @@ import MoviesForm from "../MoviesForm/MoviesForm"
 
 import withHocs from "./MoviesHoc"
 
-function Movies({classes, data}) {
+function Movies({ classes, data }) {
   const [id, setId] = useState("")
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
@@ -37,14 +37,16 @@ function Movies({classes, data}) {
   }
 
   const handleSelectChange = ({ target }) => {
-    console.log(target)
-    setName(target.name)
+    console.log('Yo yo')
+    setDirectorId(target.value)
   }
   const handleCheckboxChange = name => ({ target }) => {
-    setName({ [name]: target.checked })
+    if (name === "watched") setWatched(target.checked)
   }
   const handleChange = name => ({ target }) => {
-    setName({ [name]: target.value })
+    if (name === "name") setName(target.value)
+    if (name === "genre") setGenre(target.value)
+    if (name === "rate") setRate(target.value)
   }
 
   return (

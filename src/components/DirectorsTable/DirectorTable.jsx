@@ -16,10 +16,10 @@ import DirectorsDialog from "../DirectorsDialog/DirectorsDialog"
 
 import withHocs from "./DirectorsTableHoc"
 
-function DirectorTable({ classes, data }) {
+function DirectorTable({ classes, data, onOpen }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
-  // const [data, setData] = useState({ activeElem: {} })
+  const [tempData, setTempData] = useState({})
   const { directors = [] } = data
 
   const handleDialogOpen = () => {
@@ -30,8 +30,9 @@ function DirectorTable({ classes, data }) {
   }
 
   const handleClick = ({ currentTarget }, data) => {
+    console.log(data)
+    setTempData(data)
     setAnchorEl(currentTarget)
-    // setData(data)
   }
 
   const handleClose = () => {
@@ -39,7 +40,7 @@ function DirectorTable({ classes, data }) {
   }
 
   const handleEdit = row => {
-    // onOpen(data)
+    onOpen(tempData)
     handleClose()
   }
 
